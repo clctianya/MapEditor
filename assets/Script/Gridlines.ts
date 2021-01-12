@@ -1,3 +1,10 @@
+/*
+ * @Author: Justin
+ * @Date: 2021-01-12 17:27:08
+ * @LastEditTime: 2021-01-12 17:28:00
+ * @Description: 绘制地图上层网络,以网格为区分对地图进行编辑
+ */
+
 import { DrawData, DrawType } from "./DrawData";
 import { MapData } from "./MapData";
 

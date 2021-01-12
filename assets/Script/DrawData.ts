@@ -1,8 +1,8 @@
 /*
  * @Author: Justin
  * @Date: 2021-01-11 11:16:08
- * @LastEditTime: 2021-01-12 10:54:12
- * @Description:
+ * @LastEditTime: 2021-01-12 17:26:50
+ * @Description: 所有 graphics 绘制接口
  */
 
 export enum DrawType {
@@ -192,60 +192,6 @@ export class DrawData {
             }
         }
     }
-
-    // public setXXData(w, h, data: ArrayBuffer): void {
-    //     let pixelData = new Uint8Array(data);
-    //     for (let y = 0; y < h; ++y) {
-    //         let i = y * h;
-    //         for (let x = 0; x < w; ++x) {
-    //             let color = this.convertToNumber(data[i++], data[i++], data[i++], data[i++]);
-    //             this.pointColor[x][y] = color;
-    //             if (!this.colorCount[color]) {
-    //                 this.colorCount[color] = 1;
-    //             } else {
-    //                 this.colorCount[color] += 1;
-    //             }
-    //         }
-    //     }
-    // }
-
-    // public setaaa() {
-    //     let data = new Uint8Array(400 * 400 * 4);
-    //     // let idx = 0;
-    //     for (let i = 0; i < 200; i++) {
-    //         // let idx = 0;
-    //         for (let j = 0; j < 200; j++) {
-    //             data[i * 400 + j * 4] = 0;
-    //             data[i * 400 + j * 4 + 1] = 255;
-    //             data[i * 400 + j * 4 + 2] = 0;
-    //             data[i * 400 + j * 4 + 3] = 255;
-    //             // idx++;
-    //             // for (let k = 0; k < 4; k++) {
-    //             // if (k == 0 || k == 3)
-    //             // data[i * 200 + k * 4 + j] = 255;
-    //             // else
-    //             // data[i * 200 + k * 4 + j] = 0;
-    //             // }
-    //         }
-    //     }
-    //     console.log('data.length', data.byteLength);
-    //     this.pixelColor.set(data);
-
-    //     this.colorCount = {};
-    //     for (let x = 0; x < 400; ++x) {
-    //         // let i = x * 200;
-    //         for (let y = 0; y < 400; ++y) {
-    //             let color = this.convertToNumber(data[x * 400 + y * 4], data[x * 400 + y * 4 + 1], data[x * 400 + y * 4 + 2], data[x * 400 + y * 4 + 3]);
-    //             // let color = this.convertToNumber(255, 255, 255, 255);
-    //             this.pointColor[x][y] = color;
-    //             if (!this.colorCount[color]) {
-    //                 this.colorCount[color] = 1;
-    //             } else {
-    //                 this.colorCount[color] += 1;
-    //             }
-    //         }
-    //     }
-    // }
 
     /**
      * 获取画板中的数据

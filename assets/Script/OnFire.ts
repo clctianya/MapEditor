@@ -1,8 +1,8 @@
 /*
  * @Author: Justin
  * @Date: 2021-01-12 14:10:24
- * @LastEditTime: 2021-01-12 15:28:31
- * @Description:
+ * @LastEditTime: 2021-01-12 17:32:17
+ * @Description: 第三方库，由 onfire.js 改为 ts 文件
  */
 
 class onfire {
@@ -10,8 +10,6 @@ class onfire {
     private __cnt = 0; // evnet counter
     private string_str = 'string';
     private function_str = 'function';
-    // private hasOwnKey = Function.call.bind(Object.hasOwnProperty);
-    // private slice = Function.call.bind(Array.prototype.slice);
 
     private static _instance: onfire = null;
 

@@ -1,8 +1,8 @@
 /*
  * @Author: Justin
  * @Date: 2021-01-11 23:08:10
- * @LastEditTime: 2021-01-12 16:49:49
- * @Description: 0 表示可过，1 表示不可过
+ * @LastEditTime: 2021-01-12 17:29:13
+ * @Description: 地图中标记 0 表示可过，1 表示不可过
  */
 
 import OnFire from "./OnFire";
@@ -40,6 +40,11 @@ export class MapData {
         return MapData._instance;
     }
 
+    /**
+     * @description: 初始化网格
+     * @param {cc} size
+     * @return {*}
+     */
     public initGrids(size: cc.Size) {
         this.width = size.width;
         this.height = size.height;
@@ -49,6 +54,11 @@ export class MapData {
         this.init();
     }
 
+    /**
+     * @description: 地图数据初始化
+     * @param {*}
+     * @return {*}
+     */
     public init() {
         for (let i = 0; i < this.row; ++i) {
             this._mapInfo[i] = {};
@@ -64,10 +74,7 @@ export class MapData {
      * @return {*}
      */
     public importExternalData(fileName: string): void {
-        // cc.loader.load();
-        // cc.assetManager.loadAny()
         cc.resources.load(fileName, cc.Asset, (err, data) => {
-            console.log("data", JSON.stringify(data));
             this._mapInfo = data['json'];
             OnFire.fire('loadExternalMapInfo');
         })

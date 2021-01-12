@@ -1,8 +1,8 @@
 /*
  * @Author: Justin
  * @Date: 2021-01-11 11:40:33
- * @LastEditTime: 2021-01-12 17:19:36
- * @Description: 设计分辨率为 1920*1080，地图切割为32*32的方块，长60个格子，宽33.75 个格子
+ * @LastEditTime: 2021-01-12 17:25:35
+ * @Description: 设计分辨率为 1920*1080，地图切割为32*32的方块
  */
 
 import { DrawData, CelIndex, DrawType } from "./DrawData";
@@ -156,7 +156,6 @@ export class DrawCel extends cc.Component {
      */
     private onClickSave(): void {
         OnFire.fire('showSaveInfo', true);
-        // MapData.getInstance().saveData();
         this.menus.active = false;
     }
 
@@ -246,6 +245,11 @@ export class DrawCel extends cc.Component {
         texture.update(opts);
     }
 
+    /**
+     * @description: 展示地图配置数据，先清空当前地图显示
+     * @param {*}
+     * @return {*}
+     */
     private loadExternalMapInfo() {
         this._drawData.setColor(0, 0, 0, 0);
         let width = MapData.getInstance().width;

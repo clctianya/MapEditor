@@ -1,12 +1,11 @@
 /*
  * @Author: Justin
  * @Date: 2021-01-09 20:47:08
- * @LastEditTime: 2021-01-12 16:36:58
- * @Description:  
+ * @LastEditTime: 2021-01-12 17:31:26
+ * @Description: 大地图大小超出设计大小时，需要进行切割进行编辑，暂未实现每个地图块的区分
  */
 
 import { MapData } from './MapData.js';
-// import onfire = require('./onfire_.js');
 import OnFire from "./OnFire";
 
 
