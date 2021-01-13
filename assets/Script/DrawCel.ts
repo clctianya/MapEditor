@@ -1,7 +1,7 @@
 /*
  * @Author: Justin
  * @Date: 2021-01-11 11:40:33
- * @LastEditTime: 2021-01-12 17:25:35
+ * @LastEditTime: 2021-01-13 14:53:10
  * @Description: 设计分辨率为 1920*1080，地图切割为32*32的方块
  */
 
@@ -77,9 +77,12 @@ export class DrawCel extends cc.Component {
      * @return {*}
      */
     private _getTouchCelIndex(point: cc.Vec2): CelIndex {
+        let ox = MapData.getInstance().cameraOffsetX;
+        let oy = MapData.getInstance().cameraOffsetY
+
         let cel = MapData.getInstance().cel;
-        let row = Math.floor(point.y / cel);
-        let col = Math.floor(point.x / cel);
+        let row = Math.floor((point.y + oy) / cel);
+        let col = Math.floor((point.x + ox) / cel);
         row = row >= MapData.getInstance().row ? MapData.getInstance().row - 1 : row;
         col = col >= MapData.getInstance().col ? MapData.getInstance().col - 1 : col;
         return new CelIndex(row, col);
@@ -159,9 +162,24 @@ export class DrawCel extends cc.Component {
         this.menus.active = false;
     }
 
+    /**
+     * @description: 显示数据导入界面
+     * @param {*}
+     * @return {*}
+     */
     private onClickImportMapInfo(): void {
         this.menus.active = false;
         OnFire.fire('showSaveInfo', false);
+    }
+
+    /**
+     * @description: 相机控制界面
+     * @param {*}
+     * @return {*}
+     */
+    private onClickMoveCamera(): void {
+        this.menus.active = false;
+        OnFire.fire('showMoveCamera');
     }
 
     /**

@@ -1,7 +1,7 @@
 /*
  * @Author: Justin
  * @Date: 2021-01-11 23:08:10
- * @LastEditTime: 2021-01-12 17:29:13
+ * @LastEditTime: 2021-01-13 14:54:15
  * @Description: 地图中标记 0 表示可过，1 表示不可过
  */
 
@@ -26,18 +26,42 @@ export class MapData {
     public get height(): number { return this._height; }
     public set height(height: number) { this._height = height; }
 
-    public _width: number = 0;
+    protected _width: number = 0;
     public get width(): number { return this._width; }
     public set width(width: number) { this._width = width; }
+
+    protected _cameraOffsetX: number = 0;
+    public get cameraOffsetX(): number { return this._cameraOffsetX }
+    public set cameraOffsetX(offsetX: number) { this._cameraOffsetX = offsetX; }
+
+    protected _cameraOffsetY: number = 0;
+    public get cameraOffsetY(): number { return this._cameraOffsetY }
+    public set cameraOffsetY(offsetY: number) { this._cameraOffsetY = offsetY; }
 
     private _mapInfo: any = {}
     public get mapInfo(): any { return this._mapInfo; }
 
+
     public static getInstance(): MapData {
         if (MapData._instance == null) {
             MapData._instance = new MapData();
+            MapData._instance.init();
         }
         return MapData._instance;
+    }
+
+    private init() {
+        OnFire.on('cameraMoveEnd', this.cameraMoveEnd, this);
+    }
+
+    /**
+     * @description: 相机移动结束
+     * @param {*} data
+     * @return {*}
+     */
+    private cameraMoveEnd(data) {
+        this.cameraOffsetX = data.offsetX;
+        this.cameraOffsetY = data.offsetY;
     }
 
     /**
@@ -51,7 +75,7 @@ export class MapData {
         this.col = Math.ceil(size.width / this.cel);
         this.row = Math.ceil(size.height / this.cel);
         console.log("格子数量", this.col, this.row);
-        this.init();
+        this.initMapInfo();
     }
 
     /**
@@ -59,7 +83,7 @@ export class MapData {
      * @param {*}
      * @return {*}
      */
-    public init() {
+    public initMapInfo() {
         for (let i = 0; i < this.row; ++i) {
             this._mapInfo[i] = {};
             for (let j = 0; j < this.col; ++j) {
