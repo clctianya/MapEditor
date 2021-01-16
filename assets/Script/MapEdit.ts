@@ -1,7 +1,7 @@
 /*
  * @Author: Justin
  * @Date: 2021-01-09 20:47:08
- * @LastEditTime: 2021-01-13 14:55:28
+ * @LastEditTime: 2021-01-16 18:32:47
  * @Description: 大地图大小超出设计大小时，需要进行切割进行编辑，暂未实现每个地图块的区分
  */
 
@@ -102,6 +102,9 @@ export default class MapEdit extends cc.Component {
                 this.cameMoveNode.active = false;
                 OnFire.fire('cameraMoveEnd', { offsetX: x, offsetY: y })
             })
+            .start();
+        cc.tween(this.infoWindow)
+            .to(0.2, { x: x, y: y })
             .start();
     }
 

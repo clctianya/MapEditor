@@ -1,7 +1,7 @@
 /*
  * @Author: Justin
  * @Date: 2021-01-11 23:08:10
- * @LastEditTime: 2021-01-13 14:54:15
+ * @LastEditTime: 2021-01-16 20:41:49
  * @Description: 地图中标记 0 表示可过，1 表示不可过
  */
 
@@ -84,6 +84,11 @@ export class MapData {
      * @return {*}
      */
     public initMapInfo() {
+        this._mapInfo.width = this.width;
+        this._mapInfo.height = this.height;
+        this._mapInfo.col = this.col;
+        this._mapInfo.row = this.row;
+        this._mapInfo.cel = this.cel;
         for (let i = 0; i < this.row; ++i) {
             this._mapInfo[i] = {};
             for (let j = 0; j < this.col; ++j) {
@@ -125,7 +130,7 @@ export class MapData {
             let datas = JSON.stringify(this._mapInfo);
             var textFileAsBlob = new Blob([datas], { type: 'application/json' });
             var downloadLink = document.createElement("a");
-            downloadLink.download = fileName;
+            downloadLink.download = fileName + '.json';
             downloadLink.innerHTML = "Download File";
             if (window.webkitURL != null) {
                 // Chrome允许点击链接
